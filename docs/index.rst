@@ -12,6 +12,10 @@ documentation for details.
 
 
 .. toctree::
-   :maxdepth: 2
    :caption: Contents:
+   :glob:
+   *
+   2000/*
+   2001/*
+   2002/*
 

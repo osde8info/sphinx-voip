@@ -31,13 +31,13 @@ jobs:
 
     - name: Build1
       run:
-        make html
+        make dirhtml
       # uses: ammaraskar/sphinx-action@master
 
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
       with:
-        path: output/html
+        path: output/dirhtml
 
   # Deployment job
   deploy:
