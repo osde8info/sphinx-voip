@@ -11,6 +11,12 @@ copyright = '2026, clive darra'
 author = 'clive darra'
 release = '0.0.1'
 
+import locale
+try:
+    locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+except locale.Error:
+    locale.setlocale(locale.LC_ALL, 'C')
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
