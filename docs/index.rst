@@ -14,6 +14,7 @@ documentation for details.
 .. toctree::
    :caption: Contents:
    :glob:
+   
    *
    2000/*
    2001/*
