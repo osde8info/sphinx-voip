@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-2001
+2001-01
 ==================
 
 Add your content using ``restructuredtext`` syntax. See the
