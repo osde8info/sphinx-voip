@@ -1,6 +1,13 @@
-name: "sphinx"
+#
+# sphinx
+#
+name: sphinx
 
-on: push
+on:
+  push:
+    branches: ["main","dev"]
+
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,21 +21,35 @@ jobs:
       with:
         persist-credentials: false
 
-    - name: Build HTML
+    - name: Install1
       run: |
         pip install -r requirements.txt
+
+    - name: Setup Pages
+      id: pages
+      uses: actions/configure-pages@v5
+
+    - name: Build1
+      run:
         make html
       # uses: ammaraskar/sphinx-action@master
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v3
       with:
-        name: html-docs
         path: output/html
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: output/html
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
